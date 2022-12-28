@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chesar's chifer</title>
+    <link rel="icon" href="./img/chatting.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        body{
+            font-family: 'Montserrat', sans-serif;
+        }
+        .chiferContainer {
+            display: flex;
+        }
+
+        input {
+            width: 200px;
+            height: 45px;
+            padding-left: 10px;
+            font-size: 1.2em;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .settinsBox button {
+            min-width: 80px;
+            height: 30px;
+            color: white;
+            background-color: rgb(0, 81, 255);
+            border: none;
+            padding: 3px 10px;
+            cursor: pointer;
+        }
+
+        .settinsBox {
+            margin: 10px 0;
+        }
+
+        .settinsBox button:last-child {
+            background-color: rgb(226, 0, 0);
+        }
+
+        #select {
+            margin-top: 3px;
+        }
+
+        .chiferContainer__right {
+            margin-left: 50px;
+        }
+
+        .mask {
+            background-color: rgba(0, 0, 0, .6);
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .logScreen {
+            width: 400px;
+            border: 2px solid rgb(75, 75, 255);
+            border-radius: 8px;
+            background-color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logScreen button {
+            width: 100%;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            background-color: rgb(75, 75, 255);
+            font-weight: 700;
+            color: white;
+            margin-top: 15px;
+            cursor: pointer;
+            box-shadow: 0 5px 8px #555;
+            font-size: 1em;
+            letter-spacing: 0.5px;
+            transition: 0.2s;
+        }
+        .logScreen button:active{
+            position: relative;
+            top: 2px;
+            box-shadow: 0 3px 5px #555;
+        }
+        .logScreen input{
+            border-radius: 8px;
+            border: 2px solid #4b4bff;
+            width: 100%;
+            margin-top: 15px;
+            height: 40px;
+            padding-left: 10px;
+            font-size: 1em;
+            color: rgb(31, 31, 197);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .logScreen input::placeholder{
+            color: rgb(31, 31, 197);
+        }
+        .logScreen span{
+            font-size: 1.5em;
+            font-weight: 700;
+            color: rgb(31, 31, 197);
+            margin-bottom: 20px;
+        }
+        .signInSpan{
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            padding: 10px 30px;
+            border-radius: 15px;
+            color: white;
+            background-color: rgb(75, 75, 255);
+            font-size: 1em;
+            z-index: 1;
+            cursor: pointer;
+        }
+        #close{
+            position: absolute;
+            margin-left: 355px;
+            margin-top: -10px;
+            width: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mask">
+        <div class="logScreen">
+            <img id="close" src="./img/close.png" alt="close">
+            <span>Sing up</span>
+            <input placeholder="Enter your login" type="text" id="loginInp">
+            <input placeholder="Enter your password" type="password" id="passwordInp">
+            <button id="signUpBtn">Sign up</button>
+            <button id="signInBtn">Sign in</button>
+        </div>
+    </div>
+    <div class="wrap">
+        <span class="signInSpan">Sign in</span>
+        <div class="chiferContainer">
+            <div class="chiferContainer__left">
+                <input id="startInp" type="text" placeholder="Введіть текст">
+                <div class="settinsBox">
+                    <button id="chiferBtn">Зашифрувати</button>
+                    <button id="deChiferBtn">Дешифрувати</button>
+                    <button id="clean">Очистити</button>
+                </div>
+                <span>Kрок зсуву:</span> <br>
+                <select id="select">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option selected value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <div class="chiferContainer__right">
+                <input id="resultInp" type="text" placeholder="результат">
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
